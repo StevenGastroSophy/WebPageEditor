@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>WebPageEditor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel=stylesheet type="text/css" href="./popup.css">
+</head>
+
+<body>
+	<div class="panel">
+		<div class="row">
+			<div class="cell">
+				<select id="elementSelector"></select>
+			</div>
+			<div class="cell">
+				<select id="selectType">
+					<option value="SELECT">Only Select</option>
+					<option value="EDIT_TEXT">Edit Text</option>
+					<option value="EDIT_HREF">Edit Link</option>
+					<option value="EDIT_SRC">Edit Reference</option>
+					<option value="ADD_DATASET">Add data-attribute</option>
+					<option value="EDIT_DATASET">Edit data-attribute</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="cell"><button id="done" class="btn">DONE</button></div>
+			<div class="cell"><button id="applyElementSelecting" class="btn">APPLY</button></div>
+		</div>
+		<div class="row">
+			<div class="cell"><button id="cloneCons" class="btn">COPY BEFORE</button></div>
+			<div class="cell"><button id="cloneAppend" class="btn">COPY AFTER</button></div>
+		</div>
+		<div class="row">
+			<div class="cell"><button id="goToOptions" class="btn">OPTIONS</button></div>
+			<div class="cell"><button id="download" class="btn">DOWNLOAD</button></div>
+		</div>
+	</div>
+	<script src="./popup.js"></script>
+</body>
+
+</html>

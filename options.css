@@ -1,0 +1,105 @@
+body {
+	margin: 0;
+	background: rgb(28, 32, 34);
+}
+
+.btn {
+	background-color: rgb(64, 169, 243);
+	background-size: 720%;
+	box-sizing: border-box;
+	text-align: center;
+	color: white;
+	font-weight: 600;
+	width: inherit;
+	user-select: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 0.875em;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	outline: none;
+	border-width: 2px;
+	border-style: solid;
+	border-color: rgb(102, 185, 244);
+	border-image: initial;
+	border-radius: 4px;
+	text-decoration: none;
+	overflow: hidden;
+	padding: 0.5em 0.7em;
+}
+
+.btn.btn_save {
+  font-size: 2em;
+}
+
+.fileBtn label {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: 10vh;
+  padding: 0 5em;
+  background: #336699;
+  border-radius: 10px;
+  font-size: 1.5em;
+  line-height: 10vh;
+  font-weight: 700;
+  color: #fff;
+  appearance: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
+}
+
+.fileBtn label:hover,
+.fileBtn label:active {
+  background-color: #224365;
+}
+
+.fileBtn input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;    
+}
+
+.result {
+  padding: 0;
+  margin: 0;
+	resize: none;
+	width: 100%;
+	height: 100%;
+	background-color: #4b1d3f;
+	border: none;
+	color: #FFFFFF;
+	font-size: 1.1rem;
+}
+
+.main {
+  width: 60vw;
+  height: 99.5vh;
+  margin: 0 auto;
+}
+
+.main .section {
+  text-align: center;
+}
+
+.section.section1 {
+  height: 40%;
+}
+
+.section.section2 {
+  height: 60%;
+}
+
+.subSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.subSection > div {
+  height: 50%;
+}

@@ -1,0 +1,14 @@
+.wpe_onhover, .wpe_onhover > *:first-child:hover {
+	background-color: #191970 !important;
+}
+
+.wpe_onclick, .wpe_onclick > *:first-child:hover {
+	background-color: #FEB330 !important;
+}
+
+.wpe_onediting > input[type="text"],
+.wpe_onediting > input[type="text"]:hover {
+	background-color: #FFFFFF !important;
+	color: #000000 !important;
+	font-family: Arial,Microsoft JhengHei,Helvetica Neue,Helvetica,sans-serif;
+}

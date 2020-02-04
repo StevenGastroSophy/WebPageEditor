@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Options for SwapHeader</title>
+  <meta charset="UTF-8">
+  <link rel=stylesheet type="text/css" href="./options.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="section section1">
+      <div class="subSection">
+        <div>
+          <div class="fileBtn">
+            <label for="file" id="fileName">CHOOSE CONFIG FILE</label>
+            <input type="file" id="file" name="file" accept="application/JSON" />
+          </div>
+        </div>
+        <div>
+          <button id="save" class="btn btn_save">SAVE</button>
+        </div>
+      </div>
+    </div>
+    <div class="section section2">
+      <textarea id="result" class="result"></textarea>
+    </div>
+  </div>
+  <script src="./options.js"></script>
+</body>
+
+</html>
