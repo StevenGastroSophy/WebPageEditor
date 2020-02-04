@@ -132,7 +132,7 @@ class Editing {
 		event.preventDefault();
 		const el = event.currentTarget;
 		const inputDataName = window.prompt("Please enter the name of this data-attributes", '');
-		if (inputDataName || inputDataName !== '') {
+		if (inputDataName && inputDataName !== '') {
 			const dataName = inputDataName.replace(/ /g, '');
 			const dataValue = window.prompt(`Please enter the value of this data-${dataName}`, '');
 			if (dataValue) {
