@@ -132,8 +132,8 @@ class Editing {
 		event.preventDefault();
 		const el = event.currentTarget;
 		const inputDataName = window.prompt("Please enter the name of this data-attributes", '');
-		const dataName = inputDataName.replace(/ /g, '');
-		if (dataName || dataName !== '') {
+		if (inputDataName || inputDataName !== '') {
+			const dataName = inputDataName.replace(/ /g, '');
 			const dataValue = window.prompt(`Please enter the value of this data-${dataName}`, '');
 			if (dataValue) {
 				el.dataset[dataName] = dataValue;
