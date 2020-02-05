@@ -43,23 +43,23 @@ Create a `.json` file look like this:
 Selectors assigned to the **elements** in your **Config.json**.
 
 ### Actions(top-right corner)
-* **Only Select** : turn on the selecting mode, **click** to select the element you want to **clone**.
-* **Edit Text** : edit the **text** of the elements.
-* **Edit Link** : **doubleclick** to edit the `href` attribute of the element.
-* **Edit Reference** : **doubleclick** to edit the `src` attribute of the element.
-* **Show all (display block)** : add a class contains `display: block` to show the elements.
-* **Hide all (display none)** : add a class contains `display: none` to hide the elements.
-* **Add data-attribute** : **doubleclick** to add a [data-attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) on the element.
-* **Edit data-attribute** : **doubleclick** to edit a [data-attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) on the element.
+* **Only Select** : Turn on the selecting mode, **click** to select the element you want to **clone**.
+* **Edit Text** : Edit the **text** of the elements.
+* **Edit Link** : **Doubleclick** to edit the `href` attribute of the element.
+* **Edit Reference** : **Doubleclick** to edit the `src` attribute of the element.
+* **Show all (display block)** : Add a class contains `display: block` to show the elements.
+* **Hide all (display none)** : Add a class contains `display: none` to hide the elements.
+* **Add data-attribute** : **Doubleclick** to add a [data-attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) on the element.
+* **Edit data-attribute** : **Doubleclick** to edit a [data-attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) on the element.
 
 ----
 ## Buttons on the popup panel
 * **APPLY** : Apply the  **current option** of selector/actions selectbox to your current chrome tab.
-* **COPY BEFORE** : copy the element you selected and insert **before** itself.
-* **COPY AFTER** : copy the element you selected and insert **after** itself.
-* **DONE** : turn off the selecting mode and remove all classes and listeners.
-* **DOWNLOAD** : download part of the page. the range was declared in **downloadTarget**.
-* **OPTIONS** : open the **OPTIONS page**.
+* **COPY BEFORE** : Copy the element you selected and insert **before** itself.
+* **COPY AFTER** : Copy the element you selected and insert **after** itself.
+* **DONE** : Turn off the selecting mode and remove all classes and listeners.
+* **DOWNLOAD** : Download part of the page. The range was declared in **downloadTarget**.
+* **OPTIONS** : Open the **OPTIONS page**.
 
 ----
 ## Usage
