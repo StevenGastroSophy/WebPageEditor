@@ -1,3 +1,9 @@
+// Remove class attribute if it is empty
+const removeClass = (el, className) => {
+	el.classList.remove(className);
+	if (el.classList.length === 0) {el.removeAttribute("class");}
+}
+
 class Selecting {
 	constructor() {
 			this.className = {
@@ -21,7 +27,7 @@ class Selecting {
 
 	_onMouseleave = (event) => {
 		const el = event.currentTarget;
-		el.classList.remove(this.className.hover);
+		removeClass(el, this.className.hover);
 	}
 
 	addListener(el) {
@@ -38,15 +44,13 @@ class Selecting {
 
 	resetClass() {
 		document.querySelectorAll(`.${this.className.click}`).forEach(
-			(el) => { 
-				el.classList.remove(this.className.click);
-				if (el.classList.length === 0) {el.removeAttribute("class");}
+			(el) => {
+				removeClass(el, this.className.click);
 			}
 		);
 		document.querySelectorAll(`.${this.className.hover}`).forEach(
-			(el) => { 
-				el.classList.remove(this.className.hover);
-				if (el.classList.length === 0) {el.removeAttribute("class");}
+			(el) => {
+				removeClass(el, this.className.hover);
 			}
 		);
 	}
@@ -55,6 +59,8 @@ class Selecting {
 class Editing {
 	constructor() {
 			this.className = {
+				show: 'wpe_onshow',
+				hide: 'wpe_onhide',
 				edit: 'wpe_onediting'
 			}
 	}
@@ -66,7 +72,7 @@ class Editing {
 		const el = event.currentTarget;
 		// use a class to determine whether el is currently being edited or not
 		const isEditing = el.classList.contains(this.className.edit);
-		if (isEditing) { el.classList.remove(this.className.edit); return; }
+		if (isEditing) { removeClass(el, this.className.edit); return; }
 		el.classList.add(this.className.edit);
 		const oldInnerHTML = el.innerHTML;
 		el.innerHTML = `
@@ -104,7 +110,7 @@ class Editing {
 			alert('The target you selected has no link.');
 			return;
 		}
-		const href = window.prompt('Please Insert a new link.','');
+		const href = window.prompt('Please Insert a new link.', oldHref);
 		if (href) {
 			el.href = href;
 		} else {
@@ -120,7 +126,7 @@ class Editing {
 			alert('The target you selected has no reference.');
 			return;
 		}
-		const src = window.prompt('Please Insert a new reference.','');
+		const src = window.prompt('Please Insert a new reference.', oldSrc);
 		if (src) {
 			el.src = src;
 		} else {
@@ -172,6 +178,14 @@ class Editing {
 			case 'EDIT_SRC':
 				el.addEventListener('dblclick', this._onDoubleclickSrc);
 				break;
+			case 'DISPLAY_BLOCK':
+				removeClass(el, this.className.hide);
+				el.classList.add(this.className.show);
+				break;
+			case 'DISPLAY_NONE':
+				removeClass(el, this.className.show);
+				el.classList.add(this.className.hide);
+				break;
 			case 'ADD_DATASET':
 				el.addEventListener('dblclick', this._addDataset);
 				break;
@@ -187,10 +201,26 @@ class Editing {
 		// replaceed by _addContentEditable and _removeContentEditable
 		// el.removeEventListener('dblclick', this._onDoubleclickText);
 		this._removeContentEditable(el);
+		if (el.classList.length === 0) {el.removeAttribute("class");}
 		el.removeEventListener('dblclick', this._onDoubleclickHref);
 		el.removeEventListener('dblclick', this._onDoubleclickSrc);
 		el.removeEventListener('dblclick', this._addDataset);
 		el.removeEventListener('dblclick', this._editDataset);
+	}
+
+	resetClass() {
+		document.querySelectorAll(`.${this.className.show}`).forEach(
+			(el) => {
+				removeClass(el, this.className.show);
+				if (el.classList.length === 0) {el.removeAttribute("class");}
+			}
+		);
+		document.querySelectorAll(`.${this.className.hide}`).forEach(
+			(el) => {
+				removeClass(el, this.className.hide);
+				if (el.classList.length === 0) {el.removeAttribute("class");}
+			}
+		);
 	}
 
 	// replaceed by _addContentEditable and _removeContentEditable
@@ -233,6 +263,24 @@ const removeElementSelecting = (selectorString) => {
 	}
 }
 
+const combineBefore = (...funcs) => {
+	return (callback, prevSelectorString = '') => {
+		funcs.forEach((func) => {
+			func(() => {}, prevSelectorString)();
+		});
+		return (...args) => {
+			callback(...args);
+		}
+	}
+}
+
+const removeClassBefore = (callback, prevSelectorString = '') => {
+	return (...args) => {
+		editing.resetClass();
+		callback(...args);
+	}
+}
+
 const removeSelectingBefore = (callback, prevSelectorString = '') => {
 	return (...args) => {
 		if (prevSelectorString.length > 0) { removeElementSelecting(prevSelectorString); }
@@ -245,6 +293,7 @@ const applyElementSelectingEvent = (selectorString, selectType) => {
 	alert('Selecting/Editing mode is on.');
 }
 
+// need to remove show/hide class before
 const doneEvent = () => {
 	alert('Selecting/Editing mode is off.');
 }
@@ -254,10 +303,11 @@ const cloneAddEvent = (type) => {
 	if (!el) {alert('Please select a target first.'); return;}
 	const insertType = (type === 'beforebegin') ? 'beforebegin' : 'afterend';
 	const newEl = el.insertAdjacentElement(insertType, el.cloneNode(true));
-	newEl.classList.remove(selecting.className.click);
+	removeClass(newEl, selecting.className.click);
 	selecting.addListener(newEl);
 }
 
+// need to remove show/hide class before
 const downloadEvent = (selectorString, filename) => {
 	const data = document.querySelector(selectorString).outerHTML;
 	const blob = new Blob([data], { type: 'text/html' });
@@ -268,7 +318,9 @@ const downloadEvent = (selectorString, filename) => {
 const onMessage = (message) => {
 	switch (message.action) {
 		case 'DOWNLOAD':
-			removeSelectingBefore(downloadEvent, message.prevSelectorString)(
+			combineBefore(removeClassBefore, removeSelectingBefore)(
+				downloadEvent, message.prevSelectorString
+			)(
 				message.targetSelectorString,
 				message.outputFileName
 			);
@@ -289,7 +341,9 @@ const onMessage = (message) => {
 			cloneAddEvent('beforebegin');
 			break;
 		case 'DONE':
-			removeSelectingBefore(doneEvent, message.prevSelectorString)();
+			combineBefore(removeClassBefore, removeSelectingBefore)(
+				doneEvent, message.prevSelectorString
+			)();
 			break;
 		default:
 			break;
