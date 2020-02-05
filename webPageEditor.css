@@ -6,6 +6,14 @@
 	background-color: #FEB330 !important;
 }
 
+.wpe_onshow {
+	display: block !important;
+}
+
+.wpe_onhide {
+	display: none !important;
+}
+
 .wpe_onediting > input[type="text"],
 .wpe_onediting > input[type="text"]:hover {
 	background-color: #FFFFFF !important;
