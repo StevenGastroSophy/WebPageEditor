@@ -308,8 +308,15 @@ const cloneAddEvent = (type) => {
 }
 
 // need to remove show/hide class before
-const downloadEvent = (selectorString, filename) => {
-	const data = document.querySelector(selectorString).outerHTML;
+const downloadEvent = (selectorString, filename, isAll = false) => {
+	let data = '';
+	if (!isAll) {
+		data = document.querySelector(selectorString).outerHTML;
+	} else {
+		data = [...document.querySelectorAll(selectorString)].map(
+			(el) => el.outerHTML
+		).join('');
+	}
 	const blob = new Blob([data], { type: 'text/html' });
 	const url = URL.createObjectURL(blob);
 	chrome.runtime.sendMessage({ action: 'DOWNLOAD_BACKGROUND', url: url, filename: filename });
@@ -317,12 +324,22 @@ const downloadEvent = (selectorString, filename) => {
 
 const onMessage = (message) => {
 	switch (message.action) {
-		case 'DOWNLOAD':
+		case 'DOWNLOAD_FIRST':
 			combineBefore(removeClassBefore, removeSelectingBefore)(
 				downloadEvent, message.prevSelectorString
 			)(
 				message.targetSelectorString,
-				message.outputFileName
+				message.outputFileName,
+				false
+			);
+			break;
+		case 'DOWNLOAD_ALL':
+			combineBefore(removeClassBefore, removeSelectingBefore)(
+				downloadEvent, message.prevSelectorString
+			)(
+				message.targetSelectorString,
+				message.outputFileName,
+				true
 			);
 			break;
 		case 'APPLY_ELEMENT_SELECTING':

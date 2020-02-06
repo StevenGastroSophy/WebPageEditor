@@ -10,10 +10,8 @@ const getSelectedTab = (tab) => {
 	const elementSelector = document.getElementById('elementSelector');
 
 	let currentSelectorString = '';
-	let targetSelectorString = '';
 	let outputFileName = '';
 	chrome.storage.sync.get({
-		downloadTarget: 'body',
 		outputFileName: 'output.shtml',
     elements: [{
       "NAME": "BODY",
@@ -23,16 +21,27 @@ const getSelectedTab = (tab) => {
   }, (option) => {
 		loadOptions(elementSelector, option.elements);
 		currentSelectorString = option.currentSelectorString || option.elements[0].CSS_SELECTOR;
-		targetSelectorString = option.downloadTarget;
 		outputFileName = option.outputFileName;
 	});
 
-	document.getElementById('download').addEventListener('click',
+	document.getElementById('downloadFirst').addEventListener('click',
 		() => {
 			const prevSelectorString = currentSelectorString;
 			sendMessage({ 
-				action: 'DOWNLOAD',
-				targetSelectorString: targetSelectorString,
+				action: 'DOWNLOAD_FIRST',
+				targetSelectorString: document.getElementById('elementSelector').value,
+				outputFileName: outputFileName,
+				prevSelectorString: prevSelectorString
+			});
+		}
+	);
+
+	document.getElementById('downloadAll').addEventListener('click',
+		() => {
+			const prevSelectorString = currentSelectorString;
+			sendMessage({ 
+				action: 'DOWNLOAD_ALL',
+				targetSelectorString: document.getElementById('elementSelector').value,
 				outputFileName: outputFileName,
 				prevSelectorString: prevSelectorString
 			});
