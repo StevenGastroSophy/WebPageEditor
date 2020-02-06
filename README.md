@@ -60,7 +60,8 @@ Selectors assigned to the **elements** in your **Config.json**.
 * **COPY BEFORE** : Copy the element you selected and insert **before** itself.
 * **COPY AFTER** : Copy the element you selected and insert **after** itself.
 * **DONE** : Turn off the selecting mode and remove all classes and listeners.
-* **DOWNLOAD** : Download certain part of the current page. The range is determined by the current option of **Selectors**. (only the **first** element will be downloaded)
+* **DOWNLOAD 1ST** : Download certain part of the current page. The range is determined by the current option of **Selectors**. (only the **first** element will be downloaded)
+* **DOWNLOAD ALL** : Download certain part of the current page. The range is determined by the current option of **Selectors**. (**all** the elements will be downloaded)
 * **OPTIONS** : Open the **OPTIONS page**.
 
 ----
@@ -75,8 +76,9 @@ Selectors assigned to the **elements** in your **Config.json**.
 * Click **WebPageEditor Icon** to open the popup panel.
 * (Click **DONE button**)
 * Select the part you want to download in **Selector selectbox**.
-* Click **DOWNLOAD button**.
+* Click **DOWNLOAD 1ST button**.
 
 ----
 ## changelog
 * 2020/02/06 Remove **downloadTarget**, the range of downloading is determined by the current option of **Selector selectbox**.
+* 2020/02/06 **DOWNLOAD button** is split into **DOWNLOAD 1ST button** and * **DOWNLOAD ALL button**.
