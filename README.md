@@ -13,17 +13,19 @@ Edit your current webpage and save/download specific part of it.
 Create a `.json` file look like this:
 
     {
-      "downloadTarget": "#main",
       "outputFileName": "SAMPLE.shtml",
       "elements": [
         {
           "NAME": "GOOGLE ICON",
           "CSS_SELECTOR": "#hplogo"
+        },
+        {
+          "NAME": "DOWNLOAD PART",
+          "CSS_SELECTOR": "body"
         }
       ]
     }
 
-* **downloadTarget** : `CSS Selector` of the element you want to download.
 * **ouputFileName** : the name of downloaded file.
 * **elements** : an `array` of the elements you want to modified that contains name of the element and its `CSS Selector`.
 
@@ -58,18 +60,23 @@ Selectors assigned to the **elements** in your **Config.json**.
 * **COPY BEFORE** : Copy the element you selected and insert **before** itself.
 * **COPY AFTER** : Copy the element you selected and insert **after** itself.
 * **DONE** : Turn off the selecting mode and remove all classes and listeners.
-* **DOWNLOAD** : Download part of the page. The range was declared in **downloadTarget**.
+* **DOWNLOAD** : Download certain part of the current page. The range is determined by the current option of **Selectors**. (only the **first** element will be downloaded)
 * **OPTIONS** : Open the **OPTIONS page**.
 
 ----
 ## Usage
 ### Change src of an img tag
 * Click **WebPageEditor Icon** to open the popup panel.
-* Select an option of **Selector selectbox**.
+* Select the part you want to edit in **Selector selectbox**.
 * Select **Edit Reference** of **Action selectbox**.
 * Click **APPLY button**.
 * **Doubleclick** the image.
 * Edit the reference.
 * Click **WebPageEditor Icon** to open the popup panel.
 * (Click **DONE button**)
+* Select the part you want to download in **Selector selectbox**.
 * Click **DOWNLOAD button**.
+
+----
+## changelog
+* 2020/02/06 Remove **downloadTarget**, the range of downloading is determined by the current option of **Selector selectbox**.
