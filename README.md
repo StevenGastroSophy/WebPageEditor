@@ -2,13 +2,16 @@
 Edit your current webpage and save/download specific part of it.
 
 ----
-## Building for use
+## Installation
+### Install from [Chrome Web Store](https://chrome.google.com/webstore/detail/webpageeditor/pkeckihikfellifcpjdmcpcbflncncpp)
+
 ### Load unpacked extension
 * Open the `chrome://extensions` page.
 * Enable the **Developer mode**.
 * Click **Load unpacked extension** button.
 * Navigate to the project's folder.
 
+## Building for use
 ### Create Config.json
 Create a `.json` file look like this:
 
