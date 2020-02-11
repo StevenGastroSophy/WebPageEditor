@@ -349,9 +349,6 @@ const onMessage = (message) => {
 			);
 			break;
 		case 'APPLY_ELEMENT_SELECTING':
-			console.log(message.selectorString);
-			console.log(message.prevSelectorString);
-			console.log(message.selectType);
 			removeSelectingBefore(applyElementSelectingEvent, message.prevSelectorString)(
 				message.selectorString,
 				message.selectType

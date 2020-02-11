@@ -1,7 +1,6 @@
 const loadOptions = (event) => {
   const el = event.target;
   const files = el.files;
-  console.log(files);
   if (files.length <= 0) {
     return false;
   }
@@ -11,10 +10,8 @@ const loadOptions = (event) => {
 
   const fr = new FileReader();
   fr.onload = function(e) { 
-    console.log(e);
     const result = JSON.parse(e.target.result);
     const formatted = JSON.stringify(result, null, 2);
-    console.log(formatted);
     document.getElementById('result').value = formatted;
   }
 
@@ -28,7 +25,6 @@ const loadOptions = (event) => {
 const saveOptions = () => {
   const formatted = document.getElementById('result').value;
   const result = JSON.parse(formatted);
-  console.log(result)
   chrome.storage.sync.set({
     downloadTarget: result.downloadTarget,
     outputFileName: result.outputFileName,
