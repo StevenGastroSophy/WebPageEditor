@@ -4,6 +4,7 @@ Edit your current webpage and save/download specific part of it.
 ----
 ## Installation
 ### Install from [Chrome Web Store](https://chrome.google.com/webstore/detail/webpageeditor/pkeckihikfellifcpjdmcpcbflncncpp)
+Please note that the webstore version may be behind the latest version here.
 
 ### Load unpacked extension
 * Open the `chrome://extensions` page.
@@ -65,6 +66,7 @@ Selectors assigned to the **elements** in your **Config.json**.
 * **DONE** : Turn off the selecting mode and remove all classes and listeners.
 * **DOWNLOAD 1ST** : Download certain part of the current page. The range is determined by the current option of **Selectors**. (only the **first** element will be downloaded)
 * **DOWNLOAD ALL** : Download certain part of the current page. The range is determined by the current option of **Selectors**. (**all** the elements will be downloaded)
+* **REMOVE** : Remove the element you selected.
 * **OPTIONS** : Open the **OPTIONS page**.
 
 ----
@@ -85,3 +87,4 @@ Selectors assigned to the **elements** in your **Config.json**.
 ## changelog
 * 2020/02/06 Remove **downloadTarget**, the range of downloading is determined by the current option of **Selector selectbox**.
 * 2020/02/06 **DOWNLOAD button** is split into **DOWNLOAD 1ST button** and **DOWNLOAD ALL button**.
+* 2020/02/06 add **REMOVE button**.
