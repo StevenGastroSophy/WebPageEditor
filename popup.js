@@ -70,6 +70,9 @@ const getSelectedTab = (tab) => {
 	document.getElementById('cloneAppend').addEventListener('click',
 		() => sendMessage({ action: 'CLONE_APPEND' })
 	);
+	document.getElementById('remove').addEventListener('click',
+		() => sendMessage({ action: 'REMOVE' })
+	);
 	document.getElementById('done').addEventListener('click', () => {
 		const prevSelectorString = currentSelectorString;
 		sendMessage({

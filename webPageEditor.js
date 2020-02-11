@@ -307,6 +307,12 @@ const cloneAddEvent = (type) => {
 	selecting.addListener(newEl);
 }
 
+const removeEvent = () => {
+	const el = document.querySelector(`.${selecting.className.click}`);
+	if (!el) {alert('Please select a target first.'); return;}
+	el.parentNode.removeChild(el);
+}
+
 // need to remove show/hide class before
 const downloadEvent = (selectorString, filename, isAll = false) => {
 	let data = '';
@@ -356,6 +362,9 @@ const onMessage = (message) => {
 			break;
 		case 'CLONE_CONS':
 			cloneAddEvent('beforebegin');
+			break;
+		case 'REMOVE':
+			removeEvent();
 			break;
 		case 'DONE':
 			combineBefore(removeClassBefore, removeSelectingBefore)(
